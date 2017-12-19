@@ -7,10 +7,6 @@ cards = Blueprint('cards', __name__,
 
 @cards.route('/index')
 def show():
-    return "cards"
+    # return "cards"
+    return render_template('cards/ok.html')
 
-
-@cards.errorhandler(404)
-def page_not_found():
-    # return "404"
-    return render_template('cards/404.html')

@@ -1,0 +1,13 @@
+<form action="sendMsg" method="post">
+    消息内容：
+    <textarea name="msg"></textarea>
+
+    选择群组：
+    <select name="access_token">
+        {% for item in groups %}
+            <option value="{{ item.tocken }}">{{ item.name }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="发送"/>
+</form>
