@@ -3,14 +3,16 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 
-from decorators.session_required import session_required
 
-oa = Blueprint('oa_api', __name__,
+from decorators.session_required import requires_authorization
+
+oa = Blueprint('oa', __name__,
                template_folder='templates')
 
 
-@oa.route('/')
-@session_required
+@oa.route('/', methods=['POST', 'GET'])
+@requires_authorization
+# @session_required
 def sendOk():
     return render_template('oa/index.html')
 

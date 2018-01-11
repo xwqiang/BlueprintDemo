@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template
-from markdown import Markdown
 
 from core.session_timeout import core
 from oa.ding import ding
@@ -11,8 +10,9 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
+app.config.from_object('config')
 
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,dd?'
 
 app.register_blueprint(oa, url_prefix='/oa')
 app.register_blueprint(cards, url_prefix='/cards')
@@ -31,5 +31,5 @@ def page_not_found(error):
 
 if __name__ == '__main__':
 
-    print('start')
+    print(app.config['USERNAME'])
     app.run(host="0.0.0.0", debug=True)
