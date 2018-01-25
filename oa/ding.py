@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 
+from decorators.session_required import requires_authorization
 from oa.DingRobot import DingRobot
 
 ding = Blueprint('ding', __name__,
@@ -21,11 +22,13 @@ groups = [
 
 
 @ding.route('/', methods=['GET'])
+@requires_authorization
 def index():
     return render_template('ding/index.html', groups=groups)
 
 
 @ding.route('/sendMsg', methods=['POST'])
+@requires_authorization
 def sendMsg():
     msg = request.form.get('msg')
     access_token = request.form.get('access_token')
@@ -33,7 +36,7 @@ def sendMsg():
     if not msg or not access_token:
         return "请输入消息内容"
 
-    ding = DingRobot('https://oapi.dingtalk.com/robot/send?access_token={access_token}'.format(access_token))
+    ding = DingRobot('https://oapi.dingtalk.com/robot/send?access_token={access_token}'.format(access_token=access_token))
 
     ding.sendText(msg)
 

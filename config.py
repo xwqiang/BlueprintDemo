@@ -1,4 +1,4 @@
-USERNAME = 'xuwuqiang'
+USERNAME = 'qiantai'
 PASSWORD = 'kuyun123'
 
-DEBUG = True  # 启动Flask的Debug模式
+DEBUG = False  # 启动Flask的Debug模式
