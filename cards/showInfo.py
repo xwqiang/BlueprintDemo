@@ -32,8 +32,9 @@ def show():
     respe = make_response()  # 创建响应实例
     # respe.response = render_template('oa/index.html')  #
     respe.headers['Content-type'] = 'text/plain'  # 文档的类型，这里写成了文本类型
-    respe.status = '500'  # 状态码定义为400
-    respe.response = 'hello world'
+    respe.headers['Set-Cookie'] = 'JSESSIONID=from_flask'  # 文档的类型，这里写成了文本类型
+    respe.status = '302'
+    respe.headers['Location'] = 'https://super.pre.in.kuyun.com'
     return respe
 
 

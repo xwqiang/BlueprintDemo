@@ -16,3 +16,10 @@ def testtocken():
     ref = request.headers.get('Referer')
     print(tocken)
     return redirect(ref,302,Response=None)
+
+
+import sets
+magic_char = {'交易时间'}
+poppins_chars = {'交易时间（家庭理财）'}
+print(magic_char & poppins_chars)   #InterSection
+print(magic_char | poppins_chars)   #Union

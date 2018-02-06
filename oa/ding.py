@@ -21,6 +21,7 @@ groups = [
 ]
 
 
+
 @ding.route('/', methods=['GET'])
 @requires_authorization
 def index():
