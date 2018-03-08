@@ -1,10 +1,7 @@
-from flask import Blueprint, make_response
-from flask import render_template
-from flask import request
 import base64
 
-from flask import session
-
+from flask import Blueprint, make_response
+from flask import request
 
 cards = Blueprint('cards', __name__,
                   template_folder='templates')

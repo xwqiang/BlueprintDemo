@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import render_template
 
+from SettingManager import SettingManager
+from config import setting
 from core.session_timeout import core
 from oa.ding import ding
 from oa.changePwd import oa
@@ -10,7 +12,6 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-app.config.from_object('config')
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,dd?'
 
@@ -23,11 +24,17 @@ app.register_blueprint(test, url_prefix='/test')
 CORS(app)
 
 
+
+
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
-    print(app.config['USERNAME'])
+    print(setting.getvalue("HOST"))
+
+
     app.run(host="0.0.0.0", debug=True)

