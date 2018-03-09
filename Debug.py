@@ -1,4 +1,9 @@
-import os
+from config import dev
 
-test=os.getenv("JAVA_HOME", None)
-print('.'.join(["aaa",test]))
+name="aa"
+pwd="aa"
+
+s={}
+keys = [key for key in dir(dev) if not key.startswith('__')]
+for k in keys:
+    print(k,getattr(dev,k))

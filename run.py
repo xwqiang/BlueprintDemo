@@ -1,15 +1,13 @@
 from flask import Flask
 from flask import render_template
-
-from SettingManager import SettingManager
-from config import setting
-from core.session_timeout import core
-from oa.ding import ding
-from oa.changePwd import oa
-from cards.showInfo import cards
-from test.test import test
 from flask_cors import CORS
 
+from SettingManager import setting
+from cards.showInfo import cards
+from core.session_timeout import core
+from oa.changePwd import oa
+from oa.ding import ding
+from test.test import test
 
 app = Flask(__name__)
 
@@ -34,6 +32,7 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
+    print(id(setting))
     print(setting.getvalue("HOST"))
 
 

@@ -1,14 +1,24 @@
 import base64
 
 from flask import Blueprint, make_response
+from flask import current_app
 from flask import request
+
+from config import dev
+from manage import User
 
 cards = Blueprint('cards', __name__,
                   template_folder='templates')
 
 
 @cards.route('/')
+
 def index():
+    print(User.query.all())
+    print(current_app.config.get("SECRET_KEY"))
+    print(current_app.config.get('SETTINGS').PASSWORD)
+    print(dev.PASSWORD)
+    print(current_app.config.get('USERNAME'))
     return '''
     <form action="/cards/index">
     <input type="text" value="a"/>

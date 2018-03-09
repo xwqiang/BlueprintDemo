@@ -1,7 +1,10 @@
 import importlib
 import os
 
+from decorators.singleton import singleton
 
+
+@singleton
 class SettingManager(object):
     def __init__(self, env_var, setting_dir):
         """
@@ -44,5 +47,7 @@ class SettingManager(object):
             self._content[key] = getattr(settings, key)
         return self
 
-    def getvalue(self,key):
+    def getvalue(self, key):
         return self.__getattr__(key)
+
+setting = SettingManager('ENV_NAME', 'config')
